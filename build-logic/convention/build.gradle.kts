@@ -25,5 +25,4 @@ dependencies {
     compileOnly(libs.hilt.gradlePlugin)
     compileOnly(libs.ksp.gradlePlugin)
     compileOnly(libs.ktlint.gradlePlugin)
-    compileOnly(libs.detekt.gradlePlugin)
 }

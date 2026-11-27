@@ -1,5 +1,4 @@
 import com.android.build.api.dsl.LibraryExtension
-import com.app.max.tglab.buildlogic.configureQualityTools
 import com.app.max.tglab.buildlogic.libs
 import com.app.max.tglab.buildlogic.version
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
@@ -35,4 +34,3 @@ tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile>().configureEach 
     }
 }
 
-configureQualityTools()
