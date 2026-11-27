@@ -14,7 +14,6 @@ import kotlinx.coroutines.launch
 abstract class MviViewModel<S : MviViewModel.UiState, I : MviViewModel.UiIntent, E : MviViewModel.UiEffect>(
     initialState: S,
 ) : ViewModel() {
-
     interface UiState
 
     interface UiIntent
