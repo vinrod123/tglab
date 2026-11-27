@@ -20,6 +20,9 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Garantir que o gradlew e executavel
+        run: chmod +x ./gradlew
+
       - name: Set up JDK (bootstrap do wrapper)
         uses: actions/setup-java@v4
         with:
