@@ -1,4 +1,3 @@
-import com.app.max.tglab.buildlogic.configureQualityTools
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 plugins {
@@ -17,4 +16,3 @@ kotlin {
     }
 }
 
-configureQualityTools()
