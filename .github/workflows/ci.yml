@@ -1,0 +1,45 @@
+name: CI
+
+on:
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    name: build
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up JDK (bootstrap do wrapper)
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+
+      - name: Setup Gradle (cache de dependencias, wrapper e toolchains provisionados)
+        uses: gradle/actions/setup-gradle@v4
+
+      - name: ktlint
+        run: ./gradlew ktlintCheck
+
+      - name: detekt
+        run: ./gradlew detekt
+
+      - name: Android Lint
+        run: ./gradlew lintDebug
+
+      - name: Testes unitarios
+        run: ./gradlew testDebugUnitTest
+
+      - name: Build debug
+        run: ./gradlew assembleDebug
