@@ -1,5 +1,5 @@
-import com.app.max.tglab.buildlogic.libs
 import com.app.max.tglab.buildlogic.library
+import com.app.max.tglab.buildlogic.libs
 
 plugins {
     id("org.jetbrains.kotlin.plugin.compose")

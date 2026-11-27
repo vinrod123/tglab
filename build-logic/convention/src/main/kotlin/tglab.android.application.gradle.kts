@@ -19,8 +19,8 @@ extensions.configure<ApplicationExtension> {
     }
 
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
+        sourceCompatibility = JavaVersion.toVersion(libs.version("jdkTarget"))
+        targetCompatibility = JavaVersion.toVersion(libs.version("jdkTarget"))
     }
 
     lint {
@@ -31,7 +31,6 @@ extensions.configure<ApplicationExtension> {
 
 tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile>().configureEach {
     compilerOptions {
-        jvmTarget.set(JvmTarget.JVM_11)
+        jvmTarget.set(JvmTarget.fromTarget(libs.version("jdkTarget")))
     }
 }
-
