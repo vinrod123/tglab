@@ -1,8 +1,10 @@
 package com.app.max.tglab.buildlogic
 
+import io.gitlab.arturbosch.detekt.Detekt
 import io.gitlab.arturbosch.detekt.extensions.DetektExtension
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.configure
+import org.gradle.kotlin.dsl.withType
 
 fun Project.configureQualityTools() {
     pluginManager.apply("org.jlleitschuh.gradle.ktlint")
@@ -11,5 +13,9 @@ fun Project.configureQualityTools() {
     extensions.configure<DetektExtension> {
         buildUponDefaultConfig = true
         allRules = false
+    }
+
+    tasks.withType<Detekt>().configureEach {
+        jvmTarget = "11"
     }
 }

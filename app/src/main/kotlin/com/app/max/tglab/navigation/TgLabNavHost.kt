@@ -30,9 +30,10 @@ fun TgLabNavHost() {
 private fun RootPlaceholderScreen(modifier: Modifier = Modifier) {
     Scaffold(modifier = modifier.fillMaxSize()) { innerPadding ->
         Box(
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(innerPadding),
+            modifier =
+                Modifier
+                    .fillMaxSize()
+                    .padding(innerPadding),
             contentAlignment = Alignment.Center,
         ) {
             Text(text = stringResource(R.string.app_name))

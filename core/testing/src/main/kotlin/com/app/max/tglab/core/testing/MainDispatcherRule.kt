@@ -12,7 +12,6 @@ import org.junit.runner.Description
 class MainDispatcherRule(
     private val testDispatcher: TestDispatcher = UnconfinedTestDispatcher(),
 ) : TestWatcher() {
-
     override fun starting(description: Description) {
         kotlinx.coroutines.Dispatchers.setMain(testDispatcher)
     }

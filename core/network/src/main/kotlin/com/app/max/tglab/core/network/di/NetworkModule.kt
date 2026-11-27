@@ -16,13 +16,13 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 object NetworkModule {
-
     @Provides
     @Singleton
-    fun provideJson(): Json = Json {
-        ignoreUnknownKeys = true
-        isLenient = true
-    }
+    fun provideJson(): Json =
+        Json {
+            ignoreUnknownKeys = true
+            isLenient = true
+        }
 
     @Provides
     @Singleton
@@ -34,14 +34,19 @@ object NetworkModule {
     @Provides
     @Singleton
     fun provideOkHttpClient(loggingInterceptor: HttpLoggingInterceptor): OkHttpClient =
-        OkHttpClient.Builder()
+        OkHttpClient
+            .Builder()
             .addInterceptor(loggingInterceptor)
             .build()
 
     @Provides
     @Singleton
-    fun provideRetrofit(okHttpClient: OkHttpClient, json: Json): Retrofit =
-        Retrofit.Builder()
+    fun provideRetrofit(
+        okHttpClient: OkHttpClient,
+        json: Json,
+    ): Retrofit =
+        Retrofit
+            .Builder()
             .baseUrl(NetworkConstants.BASE_URL)
             .client(okHttpClient)
             .addConverterFactory(json.asConverterFactory("application/json".toMediaType()))

@@ -8,18 +8,18 @@ import org.junit.Rule
 import org.junit.Test
 
 class MainDispatcherRuleTest {
-
     @get:Rule
     val mainDispatcherRule = MainDispatcherRule()
 
     @Test
-    fun `should run code dispatched to Main without a real Android looper`() = runTest {
-        var executed = false
+    fun `should run code dispatched to Main without a real Android looper`() =
+        runTest {
+            var executed = false
 
-        withContext(Dispatchers.Main) {
-            executed = true
+            withContext(Dispatchers.Main) {
+                executed = true
+            }
+
+            assertThat(executed).isTrue()
         }
-
-        assertThat(executed).isTrue()
-    }
 }
