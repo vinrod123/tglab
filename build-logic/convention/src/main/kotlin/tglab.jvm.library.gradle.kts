@@ -1,3 +1,5 @@
+import com.app.max.tglab.buildlogic.libs
+import com.app.max.tglab.buildlogic.version
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 plugins {
@@ -5,14 +7,15 @@ plugins {
     id("org.jetbrains.kotlin.jvm")
 }
 
+val jdkTarget = JavaVersion.toVersion(libs.version("jdkTarget"))
+
 java {
-    sourceCompatibility = JavaVersion.VERSION_11
-    targetCompatibility = JavaVersion.VERSION_11
+    sourceCompatibility = jdkTarget
+    targetCompatibility = jdkTarget
 }
 
 kotlin {
     compilerOptions {
-        jvmTarget.set(JvmTarget.JVM_11)
+        jvmTarget.set(JvmTarget.fromTarget(libs.version("jdkTarget")))
     }
 }
-

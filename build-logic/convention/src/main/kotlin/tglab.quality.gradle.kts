@@ -7,6 +7,12 @@ subprojects {
     pluginManager.apply("org.jlleitschuh.gradle.ktlint")
 }
 
+tasks.register("ktlintCheck") {
+    group = "verification"
+    description = "Agrega o ktlintCheck dos subprojects e do :build-logic:convention (isolado, CLI standalone)."
+    dependsOn(gradle.includedBuild("build-logic").task(":convention:ktlintCheck"))
+}
+
 val detektCli =
     configurations.create("detektCli") {
         isCanBeConsumed = false
@@ -28,6 +34,8 @@ val detektReportPath = layout.buildDirectory.file("reports/detekt/detekt.txt")
 tasks.register<DetektCliTask>("detekt") {
     group = "verification"
     description = "Roda o detekt-cli isolado em JDK 21 (ADR 0007), fora do processo do daemon (JDK 25)."
+
+    dependsOn(gradle.includedBuild("build-logic").task(":convention:detekt"))
 
     javaLauncher.set(
         detektJavaToolchainService.launcherFor {
