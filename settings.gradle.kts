@@ -1,4 +1,5 @@
 pluginManagement {
+    includeBuild("build-logic")
     repositories {
         google {
             content {
@@ -24,4 +25,8 @@ dependencyResolutionManagement {
 
 rootProject.name = "TgLab"
 include(":app")
- 
+include(":core:common")
+include(":core:designsystem")
+include(":core:ui")
+include(":core:network")
+include(":core:testing")
