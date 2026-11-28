@@ -36,6 +36,8 @@ dependencies {
     implementation(project(":core:network"))
     implementation(project(":feature:home:presentation"))
     implementation(project(":feature:home:data"))
+    implementation(project(":feature:teamdetail:presentation"))
+    implementation(project(":feature:teamdetail:data"))
     implementation(libs.androidx.core.ktx)
     implementation(libs.material)
     implementation(libs.androidx.activity.compose)
