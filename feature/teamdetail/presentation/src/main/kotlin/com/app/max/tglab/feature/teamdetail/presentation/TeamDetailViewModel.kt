@@ -16,7 +16,9 @@ class TeamDetailViewModel
     constructor(
         savedStateHandle: SavedStateHandle,
         private val getTeamGamesUseCase: GetTeamGamesUseCase,
-    ) : MviViewModel<TeamDetailUiState, TeamDetailUiIntent, TeamDetailUiEffect>(initialState = TeamDetailUiState.Loading) {
+    ) : MviViewModel<TeamDetailUiState, TeamDetailUiIntent, TeamDetailUiEffect>(
+            initialState = TeamDetailUiState.Loading,
+        ) {
         private val teamId: Long = checkNotNull(savedStateHandle.get<Long>(TEAM_ID_SAVED_STATE_KEY))
         val teamName: String = checkNotNull(savedStateHandle.get<String>(TEAM_NAME_SAVED_STATE_KEY))
 

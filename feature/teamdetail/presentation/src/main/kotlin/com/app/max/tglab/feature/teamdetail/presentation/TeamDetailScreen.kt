@@ -1,7 +1,7 @@
 package com.app.max.tglab.feature.teamdetail.presentation
 
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -42,11 +42,16 @@ fun TeamDetailScreen(
     onIntent: (TeamDetailUiIntent) -> Unit,
     modifier: Modifier = Modifier,
 ) {
+    val topCornersShape =
+        RoundedCornerShape(
+            topStart = TEAM_DETAIL_TOP_CORNER_RADIUS,
+            topEnd = TEAM_DETAIL_TOP_CORNER_RADIUS,
+        )
     Scaffold(
         modifier =
             modifier
                 .testTag("team_detail_screen")
-                .clip(RoundedCornerShape(topStart = TEAM_DETAIL_TOP_CORNER_RADIUS, topEnd = TEAM_DETAIL_TOP_CORNER_RADIUS)),
+                .clip(topCornersShape),
         topBar = {
             TeamDetailTopBar(
                 teamName = teamName,
@@ -129,12 +134,14 @@ private fun TeamDetailErrorContent(
     val title =
         when (reason) {
             TeamDetailErrorReason.NETWORK_UNAVAILABLE -> stringResource(R.string.team_detail_error_offline_title)
-            TeamDetailErrorReason.SERVER, TeamDetailErrorReason.UNKNOWN -> stringResource(R.string.team_detail_error_generic_title)
+            TeamDetailErrorReason.SERVER, TeamDetailErrorReason.UNKNOWN ->
+                stringResource(R.string.team_detail_error_generic_title)
         }
     val message =
         when (reason) {
             TeamDetailErrorReason.NETWORK_UNAVAILABLE -> ""
-            TeamDetailErrorReason.SERVER, TeamDetailErrorReason.UNKNOWN -> stringResource(R.string.team_detail_error_generic_message)
+            TeamDetailErrorReason.SERVER, TeamDetailErrorReason.UNKNOWN ->
+                stringResource(R.string.team_detail_error_generic_message)
         }
 
     ErrorState(
