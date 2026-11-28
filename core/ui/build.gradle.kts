@@ -11,4 +11,5 @@ dependencies {
     implementation(project(":core:common"))
     implementation(project(":core:designsystem"))
     implementation(libs.androidx.lifecycle.viewmodel.ktx)
+    implementation("androidx.compose.material:material-icons-core")
 }
