@@ -33,7 +33,7 @@ fun HomeScreen(
         Box(modifier = Modifier.fillMaxSize().padding(contentPadding)) {
             when (state) {
                 is HomeUiState.Loading -> HomeLoadingContent()
-                is HomeUiState.Content -> HomeTeamsList(teams = state.teams)
+                is HomeUiState.Content -> HomeTeamsList(teams = state.teams, onIntent = onIntent)
                 is HomeUiState.Empty -> HomeEmptyContent()
                 is HomeUiState.Error -> HomeErrorContent(reason = state.reason, onIntent = onIntent)
             }
@@ -50,10 +50,17 @@ private fun HomeLoadingContent() {
 }
 
 @Composable
-private fun HomeTeamsList(teams: List<TeamUiModel>) {
+private fun HomeTeamsList(
+    teams: List<TeamUiModel>,
+    onIntent: (HomeUiIntent) -> Unit,
+) {
     LazyColumn(modifier = Modifier.testTag("home_teams_list")) {
         items(items = teams, key = { it.id }) { team ->
-            TeamListItem(team = team, modifier = Modifier.testTag("home_team_item_${team.id}"))
+            TeamListItem(
+                team = team,
+                modifier = Modifier.testTag("home_team_item_${team.id}"),
+                onClick = { onIntent(HomeUiIntent.TeamTapped(teamId = team.id, teamName = team.fullName)) },
+            )
         }
     }
 }

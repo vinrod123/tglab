@@ -6,4 +6,5 @@
     <string name="home_error_generic_title">Não foi possível carregar os times</string>
     <string name="home_error_generic_message">Tente novamente.</string>
     <string name="home_error_offline_title">Sem conexão. Verifique sua internet e tente novamente.</string>
+    <string name="home_team_item_click_label">Ver jogos do time</string>
 </resources>
