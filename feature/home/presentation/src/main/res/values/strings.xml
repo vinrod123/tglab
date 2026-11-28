@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="home_title">Times</string>
+    <string name="home_loading_message">Carregando times...</string>
+    <string name="home_empty_message">Nenhum time encontrado</string>
+    <string name="home_error_generic_title">Não foi possível carregar os times</string>
+    <string name="home_error_generic_message">Tente novamente.</string>
+    <string name="home_error_offline_title">Sem conexão. Verifique sua internet e tente novamente.</string>
+</resources>
