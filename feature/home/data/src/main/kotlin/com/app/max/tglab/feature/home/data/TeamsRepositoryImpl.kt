@@ -16,6 +16,7 @@ class TeamsRepositoryImpl
         private val teamsApi: TeamsApi,
         private val dispatcherProvider: DispatcherProvider,
     ) : TeamsRepository {
+        @Suppress("TooGenericExceptionCaught", "SwallowedException")
         override suspend fun getTeams(): DomainResult<List<Team>> =
             withContext(dispatcherProvider.io) {
                 try {

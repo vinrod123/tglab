@@ -5,3 +5,7 @@ naming:
 style:
   MagicNumber:
     ignorePropertyDeclaration: true
+  MaxLineLength:
+    excludes: ['**/src/test/**', '**/src/androidTest/**']
+  UnusedPrivateMember:
+    ignoreAnnotated: ['Preview']

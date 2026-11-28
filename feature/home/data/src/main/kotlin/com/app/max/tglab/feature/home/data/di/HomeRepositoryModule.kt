@@ -24,7 +24,6 @@ abstract class HomeRepositoryModule {
         fun provideDispatcherProvider(): DispatcherProvider = DefaultDispatcherProvider()
 
         @Provides
-        fun provideGetTeamsUseCase(teamsRepository: TeamsRepository): GetTeamsUseCase =
-            GetTeamsUseCase(teamsRepository)
+        fun provideGetTeamsUseCase(teamsRepository: TeamsRepository): GetTeamsUseCase = GetTeamsUseCase(teamsRepository)
     }
 }
