@@ -22,7 +22,7 @@ fun HomeScreenRoute(
     LaunchedEffect(Unit) {
         homeViewModel.effect.collect { effect ->
             when (effect) {
-                is HomeUiEffect.NavigateToTeamDetail -> TODO()
+                is HomeUiEffect.NavigateToTeamDetail -> onNavigateToTeamDetail(effect.teamId, effect.teamName)
             }
         }
     }

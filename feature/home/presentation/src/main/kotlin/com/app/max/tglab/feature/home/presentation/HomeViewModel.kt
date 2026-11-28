@@ -15,7 +15,8 @@ class HomeViewModel
         override suspend fun handleIntent(intent: HomeUiIntent) {
             when (intent) {
                 is HomeUiIntent.LoadTeams -> loadTeams()
-                is HomeUiIntent.TeamTapped -> TODO()
+                is HomeUiIntent.TeamTapped ->
+                    sendEffect(HomeUiEffect.NavigateToTeamDetail(teamId = intent.teamId, teamName = intent.teamName))
             }
         }
 
