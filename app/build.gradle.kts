@@ -34,6 +34,8 @@ dependencies {
     implementation(project(":core:designsystem"))
     implementation(project(":core:ui"))
     implementation(project(":core:network"))
+    implementation(project(":feature:home:presentation"))
+    implementation(project(":feature:home:data"))
     implementation(libs.androidx.core.ktx)
     implementation(libs.material)
     implementation(libs.androidx.activity.compose)
