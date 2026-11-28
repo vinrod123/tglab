@@ -6,4 +6,7 @@
     <string name="team_detail_error_generic_message">Tente novamente.</string>
     <string name="team_detail_error_offline_title">Sem conexão. Verifique sua internet e tente novamente.</string>
     <string name="team_detail_back_button_label">Voltar para Home</string>
+    <string name="team_detail_back_button_text">Home</string>
+    <string name="team_detail_game_score_separator">x</string>
+    <string name="team_detail_game_item_description">%1$s %2$d a %3$s %4$d</string>
 </resources>

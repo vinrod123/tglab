@@ -15,6 +15,7 @@ dependencies {
     implementation(project(":core:common"))
     implementation(project(":core:ui"))
     implementation(project(":core:designsystem"))
+    implementation("androidx.compose.material:material-icons-core")
 
     testImplementation(project(":core:testing"))
     testImplementation(libs.robolectric)
