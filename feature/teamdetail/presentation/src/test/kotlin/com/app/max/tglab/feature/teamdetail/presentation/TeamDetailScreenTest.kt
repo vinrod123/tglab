@@ -58,7 +58,7 @@ class TeamDetailScreenTest {
             )
 
         composeTestRule.setContent {
-            TeamDetailScreen(teamName = "Boston Celtics", state = TeamDetailUiState.Content(games = games), onIntent = {})
+            TeamDetailScreen(teamName = "Miami Heat", state = TeamDetailUiState.Content(games = games), onIntent = {})
         }
 
         composeTestRule.onNodeWithTag("team_detail_games_list").assertExists()
@@ -127,16 +127,33 @@ class TeamDetailScreenTest {
     }
 
     @Test
-    fun `should show the generic error message and retry button when state is Error with reason SERVER or UNKNOWN (AC-6)`() {
-        listOf(TeamDetailErrorReason.SERVER, TeamDetailErrorReason.UNKNOWN).forEach { reason ->
-            composeTestRule.setContent {
-                TeamDetailScreen(teamName = "Boston Celtics", state = TeamDetailUiState.Error(reason = reason), onIntent = {})
-            }
-
-            composeTestRule.onNodeWithTag("team_detail_error_state").assertExists()
-            composeTestRule.onNodeWithText("Não foi possível carregar os jogos").assertExists()
-            composeTestRule.onNodeWithTag("team_detail_error_retry_button").assertExists()
+    fun `should show the generic error message and retry button when state is Error with reason SERVER (AC-6)`() {
+        composeTestRule.setContent {
+            TeamDetailScreen(
+                teamName = "Boston Celtics",
+                state = TeamDetailUiState.Error(reason = TeamDetailErrorReason.SERVER),
+                onIntent = {},
+            )
         }
+
+        composeTestRule.onNodeWithTag("team_detail_error_state").assertExists()
+        composeTestRule.onNodeWithText("Não foi possível carregar os jogos").assertExists()
+        composeTestRule.onNodeWithTag("team_detail_error_retry_button").assertExists()
+    }
+
+    @Test
+    fun `should show the generic error message and retry button when state is Error with reason UNKNOWN (AC-6)`() {
+        composeTestRule.setContent {
+            TeamDetailScreen(
+                teamName = "Boston Celtics",
+                state = TeamDetailUiState.Error(reason = TeamDetailErrorReason.UNKNOWN),
+                onIntent = {},
+            )
+        }
+
+        composeTestRule.onNodeWithTag("team_detail_error_state").assertExists()
+        composeTestRule.onNodeWithText("Não foi possível carregar os jogos").assertExists()
+        composeTestRule.onNodeWithTag("team_detail_error_retry_button").assertExists()
     }
 
     @Test
