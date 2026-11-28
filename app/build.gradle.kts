@@ -23,6 +23,10 @@ android {
             }
         }
     }
+
+    testOptions {
+        unitTests.isIncludeAndroidResources = true
+    }
 }
 
 dependencies {
@@ -30,11 +34,16 @@ dependencies {
     implementation(project(":core:designsystem"))
     implementation(project(":core:ui"))
     implementation(project(":core:network"))
+    implementation(project(":feature:home:presentation"))
+    implementation(project(":feature:home:data"))
     implementation(libs.androidx.core.ktx)
     implementation(libs.material)
     implementation(libs.androidx.activity.compose)
     implementation(libs.androidx.navigation.compose)
     testImplementation(libs.junit)
+    testImplementation(libs.robolectric)
+    testImplementation(platform(libs.compose.bom))
+    testImplementation("androidx.compose.ui:ui-test-junit4")
     androidTestImplementation(libs.androidx.espresso.core)
     androidTestImplementation(libs.androidx.junit)
 }
