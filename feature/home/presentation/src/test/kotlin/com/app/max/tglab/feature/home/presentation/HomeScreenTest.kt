@@ -35,6 +35,22 @@ class HomeScreenTest {
     }
 
     @Test
+    fun `should invoke onIntent with TeamTapped teamId and teamName when a team row is clicked (AC-1)`() {
+        var receivedIntent: HomeUiIntent? = null
+        val teams =
+            listOf(
+                TeamUiModel(id = 1, fullName = "Atlanta Hawks", city = "Atlanta", conference = "East"),
+            )
+
+        composeTestRule.setContent {
+            HomeScreen(state = HomeUiState.Content(teams = teams), onIntent = { receivedIntent = it })
+        }
+        composeTestRule.onNodeWithTag("home_team_item_1").performClick()
+
+        assertThat(receivedIntent).isEqualTo(HomeUiIntent.TeamTapped(teamId = 1, teamName = "Atlanta Hawks"))
+    }
+
+    @Test
     fun `should show the loading indicator and hide list, error and empty content when state is Loading (AC-2)`() {
         composeTestRule.setContent {
             HomeScreen(state = HomeUiState.Loading, onIntent = {})

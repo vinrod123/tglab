@@ -143,6 +143,19 @@ class HomeViewModelTest {
         }
 
     @Test
+    fun `should emit NavigateToTeamDetail effect with teamId and teamName when TeamTapped is dispatched (AC-1)`() =
+        runTest {
+            val fakeTeamsRepository = FakeTeamsRepository()
+            val homeViewModel = HomeViewModel(GetTeamsUseCase(fakeTeamsRepository))
+
+            homeViewModel.effect.test {
+                homeViewModel.onIntent(HomeUiIntent.TeamTapped(teamId = 1, teamName = "Atlanta Hawks"))
+
+                assertThat(awaitItem()).isEqualTo(HomeUiEffect.NavigateToTeamDetail(teamId = 1, teamName = "Atlanta Hawks"))
+            }
+        }
+
+    @Test
     fun `should emit Error state with reason NETWORK_UNAVAILABLE when GetTeamsUseCase returns DomainError NetworkUnavailable (AC-5)`() =
         runTest {
             val fakeTeamsRepository =

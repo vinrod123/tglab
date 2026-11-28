@@ -9,6 +9,7 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 
 @Composable
 fun HomeScreenRoute(
+    onNavigateToTeamDetail: (Long, String) -> Unit,
     modifier: Modifier = Modifier,
     homeViewModel: HomeViewModel = hiltViewModel(),
 ) {
@@ -16,6 +17,14 @@ fun HomeScreenRoute(
 
     LaunchedEffect(Unit) {
         homeViewModel.onIntent(HomeUiIntent.LoadTeams)
+    }
+
+    LaunchedEffect(Unit) {
+        homeViewModel.effect.collect { effect ->
+            when (effect) {
+                is HomeUiEffect.NavigateToTeamDetail -> TODO()
+            }
+        }
     }
 
     HomeScreen(
