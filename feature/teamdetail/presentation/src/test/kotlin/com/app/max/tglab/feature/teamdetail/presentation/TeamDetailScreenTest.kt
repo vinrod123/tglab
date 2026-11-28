@@ -62,14 +62,14 @@ class TeamDetailScreenTest {
         }
 
         composeTestRule.onNodeWithTag("team_detail_games_list").assertExists()
-        composeTestRule.onNodeWithText("Atlanta Hawks").assertExists()
-        composeTestRule.onNodeWithText("102").assertExists()
-        composeTestRule.onNodeWithText("Boston Celtics").assertExists()
-        composeTestRule.onNodeWithText("98").assertExists()
-        composeTestRule.onNodeWithText("Golden State Warriors").assertExists()
-        composeTestRule.onNodeWithText("110").assertExists()
-        composeTestRule.onNodeWithText("LA Lakers").assertExists()
-        composeTestRule.onNodeWithText("115").assertExists()
+        composeTestRule.onNodeWithText("Atlanta Hawks", useUnmergedTree = true).assertExists()
+        composeTestRule.onNodeWithText("102", useUnmergedTree = true).assertExists()
+        composeTestRule.onNodeWithText("Boston Celtics", useUnmergedTree = true).assertExists()
+        composeTestRule.onNodeWithText("98", useUnmergedTree = true).assertExists()
+        composeTestRule.onNodeWithText("Golden State Warriors", useUnmergedTree = true).assertExists()
+        composeTestRule.onNodeWithText("110", useUnmergedTree = true).assertExists()
+        composeTestRule.onNodeWithText("LA Lakers", useUnmergedTree = true).assertExists()
+        composeTestRule.onNodeWithText("115", useUnmergedTree = true).assertExists()
     }
 
     @Test
